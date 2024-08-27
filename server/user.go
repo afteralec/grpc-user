@@ -19,18 +19,18 @@ type server struct {
 
 func (s *server) Register(ctx context.Context, in *proto.RegisterRequest) (*proto.RegisterReply, error) {
 	if err := username.IsValid(in.Username); err != nil {
-		// TODO: Implement Error Details
-		return nil, status.Error(codes.InvalidArgument, "this error message is unimplemented")
+		// TODO: Add reason metadata
+		return nil, status.Error(codes.InvalidArgument, "the username provided isn't valid")
 	}
 	if !passphrase.IsValid(in.Password) {
-		// TODO: Implement Error Details
-		return nil, status.Error(codes.InvalidArgument, "this error message is unimplemented")
+		// TODO: Add reason metadata
+		return nil, status.Error(codes.InvalidArgument, "the passphrase provided isn't valid")
 	}
 
 	uid, err := s.user.Register(in.Username, in.Password)
 	if err != nil {
 		// TODO: Implement Error Details
-		return nil, status.Error(codes.Internal, "this error message is unimplemented")
+		return nil, status.Error(codes.Internal, err.Error())
 	}
 	return &proto.RegisterReply{Id: uid}, nil
 }

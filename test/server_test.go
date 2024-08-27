@@ -65,9 +65,8 @@ func TestServer(t *testing.T) {
 
 	t.Run("Register Success", func(t *testing.T) {
 		t.Parallel()
-		ctx := metadata.AppendToOutgoingContext(ctx, "authorization", "Bearer", "authorization", "some-secret-token")
 		reply, err := client.Register(ctx, &pb.RegisterRequest{
-			Username: TestUsername,
+			Username: "testified",
 			Password: TestPassword,
 		})
 		require.NoError(t, err)

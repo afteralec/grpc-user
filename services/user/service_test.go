@@ -100,7 +100,7 @@ func TestRegister(t *testing.T) {
 	ps, err := New(db, WithConfig(config))
 	require.NoError(t, err)
 
-	uid, err := ps.Register("testify", "T3sted_tested")
+	uid, err := ps.Register(TestUsername, TestPassword)
 	require.NoError(t, err)
 	require.NotEqual(t, 0, uid)
 }

@@ -12,7 +12,7 @@ test-setup:
 test-cleanup:
   scripts/cleanup.test.sh
 
-air DIR:
+dev DIR:
   docker compose -f compose.yml -f air.compose.yml {{DIR}}{{ if DIR == "up" { " --detach" } else { "" } }}
 
 sqlite:

@@ -4,9 +4,7 @@ CREATE TABLE IF NOT EXISTS user_permission_grants
   iuid        INTEGER NOT NULL,
   uid         INTEGER NOT NULL,
   id          INTEGER PRIMARY KEY,
-  created_at  INTEGER DEFAULT(unixepoch('now')),
-  FOREIGN KEY (uid) REFERENCES users(id),
-  FOREIGN KEY (iuid) REFERENCES users(id)
+  created_at  INTEGER DEFAULT(unixepoch('now'))
 );
 
 CREATE INDEX user_permission_grants_uid ON user_permission_grants(uid);
@@ -18,9 +16,7 @@ CREATE TABLE IF NOT EXISTS user_permission_revocations
   iuid        INTEGER NOT NULL,
   uid         INTEGER NOT NULL,
   id          INTEGER PRIMARY KEY,
-  created_at  INTEGER DEFAULT(unixepoch('now')),
-  FOREIGN KEY (uid) REFERENCES users(id),
-  FOREIGN KEY (iuid) REFERENCES users(id)
+  created_at  INTEGER DEFAULT(unixepoch('now'))
 );
 
 CREATE INDEX user_permission_revocations_uid ON user_permission_revocations(uid);
