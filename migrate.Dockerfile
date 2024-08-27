@@ -5,7 +5,7 @@ ENV GROUP_NAME=noroot
 ENV USER_ID=65535
 ENV USER_NAME=noroot
 
-WORKDIR /opt/mirror
+WORKDIR /opt/user
 
 RUN cargo install sqlx-cli
 

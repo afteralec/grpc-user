@@ -2,7 +2,7 @@ syntax = "proto3";
 package user;
 option go_package = "/proto";
 
-service Mirror {
+service User {
   rpc Register (RegisterRequest) returns (RegisterReply);
   rpc Login (LoginRequest) returns (LoginReply);
   rpc UserSettings (UserSettingsRequest) returns (UserSettingsReply);

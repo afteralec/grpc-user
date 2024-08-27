@@ -22,7 +22,7 @@ services:
       - user_db:/var/db
     networks:
       - net
-  mirror:
+  user:
     depends_on:
       - user_migrate
     build: .

@@ -19,21 +19,21 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Mirror_Register_FullMethodName                  = "/user.Mirror/Register"
-	Mirror_Login_FullMethodName                     = "/user.Mirror/Login"
-	Mirror_UserSettings_FullMethodName              = "/user.Mirror/UserSettings"
-	Mirror_SetUserSettingsTheme_FullMethodName      = "/user.Mirror/SetUserSettingsTheme"
-	Mirror_Users_FullMethodName                     = "/user.Mirror/Users"
-	Mirror_UserPermissionDefinitions_FullMethodName = "/user.Mirror/UserPermissionDefinitions"
-	Mirror_UserPermissions_FullMethodName           = "/user.Mirror/UserPermissions"
-	Mirror_GrantUserPermission_FullMethodName       = "/user.Mirror/GrantUserPermission"
-	Mirror_RevokeUserPermission_FullMethodName      = "/user.Mirror/RevokeUserPermission"
+	User_Register_FullMethodName                  = "/user.User/Register"
+	User_Login_FullMethodName                     = "/user.User/Login"
+	User_UserSettings_FullMethodName              = "/user.User/UserSettings"
+	User_SetUserSettingsTheme_FullMethodName      = "/user.User/SetUserSettingsTheme"
+	User_Users_FullMethodName                     = "/user.User/Users"
+	User_UserPermissionDefinitions_FullMethodName = "/user.User/UserPermissionDefinitions"
+	User_UserPermissions_FullMethodName           = "/user.User/UserPermissions"
+	User_GrantUserPermission_FullMethodName       = "/user.User/GrantUserPermission"
+	User_RevokeUserPermission_FullMethodName      = "/user.User/RevokeUserPermission"
 )
 
-// MirrorClient is the client API for Mirror service.
+// UserClient is the client API for User service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type MirrorClient interface {
+type UserClient interface {
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterReply, error)
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginReply, error)
 	UserSettings(ctx context.Context, in *UserSettingsRequest, opts ...grpc.CallOption) (*UserSettingsReply, error)
@@ -45,99 +45,99 @@ type MirrorClient interface {
 	RevokeUserPermission(ctx context.Context, in *RevokeUserPermissionRequest, opts ...grpc.CallOption) (*RevokeUserPermissionReply, error)
 }
 
-type mirrorClient struct {
+type userClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewMirrorClient(cc grpc.ClientConnInterface) MirrorClient {
-	return &mirrorClient{cc}
+func NewUserClient(cc grpc.ClientConnInterface) UserClient {
+	return &userClient{cc}
 }
 
-func (c *mirrorClient) Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterReply, error) {
+func (c *userClient) Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterReply, error) {
 	out := new(RegisterReply)
-	err := c.cc.Invoke(ctx, Mirror_Register_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, User_Register_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *mirrorClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginReply, error) {
+func (c *userClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginReply, error) {
 	out := new(LoginReply)
-	err := c.cc.Invoke(ctx, Mirror_Login_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, User_Login_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *mirrorClient) UserSettings(ctx context.Context, in *UserSettingsRequest, opts ...grpc.CallOption) (*UserSettingsReply, error) {
+func (c *userClient) UserSettings(ctx context.Context, in *UserSettingsRequest, opts ...grpc.CallOption) (*UserSettingsReply, error) {
 	out := new(UserSettingsReply)
-	err := c.cc.Invoke(ctx, Mirror_UserSettings_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, User_UserSettings_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *mirrorClient) SetUserSettingsTheme(ctx context.Context, in *SetUserSettingsThemeRequest, opts ...grpc.CallOption) (*SetUserSettingsThemeReply, error) {
+func (c *userClient) SetUserSettingsTheme(ctx context.Context, in *SetUserSettingsThemeRequest, opts ...grpc.CallOption) (*SetUserSettingsThemeReply, error) {
 	out := new(SetUserSettingsThemeReply)
-	err := c.cc.Invoke(ctx, Mirror_SetUserSettingsTheme_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, User_SetUserSettingsTheme_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *mirrorClient) Users(ctx context.Context, in *UsersRequest, opts ...grpc.CallOption) (*UsersReply, error) {
+func (c *userClient) Users(ctx context.Context, in *UsersRequest, opts ...grpc.CallOption) (*UsersReply, error) {
 	out := new(UsersReply)
-	err := c.cc.Invoke(ctx, Mirror_Users_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, User_Users_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *mirrorClient) UserPermissionDefinitions(ctx context.Context, in *UserPermissionDefinitionsRequest, opts ...grpc.CallOption) (*UserPermissionDefinitionsReply, error) {
+func (c *userClient) UserPermissionDefinitions(ctx context.Context, in *UserPermissionDefinitionsRequest, opts ...grpc.CallOption) (*UserPermissionDefinitionsReply, error) {
 	out := new(UserPermissionDefinitionsReply)
-	err := c.cc.Invoke(ctx, Mirror_UserPermissionDefinitions_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, User_UserPermissionDefinitions_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *mirrorClient) UserPermissions(ctx context.Context, in *UserPermissionsRequest, opts ...grpc.CallOption) (*UserPermissionsReply, error) {
+func (c *userClient) UserPermissions(ctx context.Context, in *UserPermissionsRequest, opts ...grpc.CallOption) (*UserPermissionsReply, error) {
 	out := new(UserPermissionsReply)
-	err := c.cc.Invoke(ctx, Mirror_UserPermissions_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, User_UserPermissions_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *mirrorClient) GrantUserPermission(ctx context.Context, in *GrantUserPermissionRequest, opts ...grpc.CallOption) (*GrantUserPermissionReply, error) {
+func (c *userClient) GrantUserPermission(ctx context.Context, in *GrantUserPermissionRequest, opts ...grpc.CallOption) (*GrantUserPermissionReply, error) {
 	out := new(GrantUserPermissionReply)
-	err := c.cc.Invoke(ctx, Mirror_GrantUserPermission_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, User_GrantUserPermission_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *mirrorClient) RevokeUserPermission(ctx context.Context, in *RevokeUserPermissionRequest, opts ...grpc.CallOption) (*RevokeUserPermissionReply, error) {
+func (c *userClient) RevokeUserPermission(ctx context.Context, in *RevokeUserPermissionRequest, opts ...grpc.CallOption) (*RevokeUserPermissionReply, error) {
 	out := new(RevokeUserPermissionReply)
-	err := c.cc.Invoke(ctx, Mirror_RevokeUserPermission_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, User_RevokeUserPermission_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// MirrorServer is the server API for Mirror service.
-// All implementations must embed UnimplementedMirrorServer
+// UserServer is the server API for User service.
+// All implementations must embed UnimplementedUserServer
 // for forward compatibility
-type MirrorServer interface {
+type UserServer interface {
 	Register(context.Context, *RegisterRequest) (*RegisterReply, error)
 	Login(context.Context, *LoginRequest) (*LoginReply, error)
 	UserSettings(context.Context, *UserSettingsRequest) (*UserSettingsReply, error)
@@ -147,257 +147,257 @@ type MirrorServer interface {
 	UserPermissions(context.Context, *UserPermissionsRequest) (*UserPermissionsReply, error)
 	GrantUserPermission(context.Context, *GrantUserPermissionRequest) (*GrantUserPermissionReply, error)
 	RevokeUserPermission(context.Context, *RevokeUserPermissionRequest) (*RevokeUserPermissionReply, error)
-	mustEmbedUnimplementedMirrorServer()
+	mustEmbedUnimplementedUserServer()
 }
 
-// UnimplementedMirrorServer must be embedded to have forward compatible implementations.
-type UnimplementedMirrorServer struct {
+// UnimplementedUserServer must be embedded to have forward compatible implementations.
+type UnimplementedUserServer struct {
 }
 
-func (UnimplementedMirrorServer) Register(context.Context, *RegisterRequest) (*RegisterReply, error) {
+func (UnimplementedUserServer) Register(context.Context, *RegisterRequest) (*RegisterReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Register not implemented")
 }
-func (UnimplementedMirrorServer) Login(context.Context, *LoginRequest) (*LoginReply, error) {
+func (UnimplementedUserServer) Login(context.Context, *LoginRequest) (*LoginReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
 }
-func (UnimplementedMirrorServer) UserSettings(context.Context, *UserSettingsRequest) (*UserSettingsReply, error) {
+func (UnimplementedUserServer) UserSettings(context.Context, *UserSettingsRequest) (*UserSettingsReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UserSettings not implemented")
 }
-func (UnimplementedMirrorServer) SetUserSettingsTheme(context.Context, *SetUserSettingsThemeRequest) (*SetUserSettingsThemeReply, error) {
+func (UnimplementedUserServer) SetUserSettingsTheme(context.Context, *SetUserSettingsThemeRequest) (*SetUserSettingsThemeReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetUserSettingsTheme not implemented")
 }
-func (UnimplementedMirrorServer) Users(context.Context, *UsersRequest) (*UsersReply, error) {
+func (UnimplementedUserServer) Users(context.Context, *UsersRequest) (*UsersReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Users not implemented")
 }
-func (UnimplementedMirrorServer) UserPermissionDefinitions(context.Context, *UserPermissionDefinitionsRequest) (*UserPermissionDefinitionsReply, error) {
+func (UnimplementedUserServer) UserPermissionDefinitions(context.Context, *UserPermissionDefinitionsRequest) (*UserPermissionDefinitionsReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UserPermissionDefinitions not implemented")
 }
-func (UnimplementedMirrorServer) UserPermissions(context.Context, *UserPermissionsRequest) (*UserPermissionsReply, error) {
+func (UnimplementedUserServer) UserPermissions(context.Context, *UserPermissionsRequest) (*UserPermissionsReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UserPermissions not implemented")
 }
-func (UnimplementedMirrorServer) GrantUserPermission(context.Context, *GrantUserPermissionRequest) (*GrantUserPermissionReply, error) {
+func (UnimplementedUserServer) GrantUserPermission(context.Context, *GrantUserPermissionRequest) (*GrantUserPermissionReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GrantUserPermission not implemented")
 }
-func (UnimplementedMirrorServer) RevokeUserPermission(context.Context, *RevokeUserPermissionRequest) (*RevokeUserPermissionReply, error) {
+func (UnimplementedUserServer) RevokeUserPermission(context.Context, *RevokeUserPermissionRequest) (*RevokeUserPermissionReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RevokeUserPermission not implemented")
 }
-func (UnimplementedMirrorServer) mustEmbedUnimplementedMirrorServer() {}
+func (UnimplementedUserServer) mustEmbedUnimplementedUserServer() {}
 
-// UnsafeMirrorServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to MirrorServer will
+// UnsafeUserServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to UserServer will
 // result in compilation errors.
-type UnsafeMirrorServer interface {
-	mustEmbedUnimplementedMirrorServer()
+type UnsafeUserServer interface {
+	mustEmbedUnimplementedUserServer()
 }
 
-func RegisterMirrorServer(s grpc.ServiceRegistrar, srv MirrorServer) {
-	s.RegisterService(&Mirror_ServiceDesc, srv)
+func RegisterUserServer(s grpc.ServiceRegistrar, srv UserServer) {
+	s.RegisterService(&User_ServiceDesc, srv)
 }
 
-func _Mirror_Register_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _User_Register_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RegisterRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MirrorServer).Register(ctx, in)
+		return srv.(UserServer).Register(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Mirror_Register_FullMethodName,
+		FullMethod: User_Register_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MirrorServer).Register(ctx, req.(*RegisterRequest))
+		return srv.(UserServer).Register(ctx, req.(*RegisterRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mirror_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _User_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(LoginRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MirrorServer).Login(ctx, in)
+		return srv.(UserServer).Login(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Mirror_Login_FullMethodName,
+		FullMethod: User_Login_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MirrorServer).Login(ctx, req.(*LoginRequest))
+		return srv.(UserServer).Login(ctx, req.(*LoginRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mirror_UserSettings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _User_UserSettings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UserSettingsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MirrorServer).UserSettings(ctx, in)
+		return srv.(UserServer).UserSettings(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Mirror_UserSettings_FullMethodName,
+		FullMethod: User_UserSettings_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MirrorServer).UserSettings(ctx, req.(*UserSettingsRequest))
+		return srv.(UserServer).UserSettings(ctx, req.(*UserSettingsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mirror_SetUserSettingsTheme_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _User_SetUserSettingsTheme_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SetUserSettingsThemeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MirrorServer).SetUserSettingsTheme(ctx, in)
+		return srv.(UserServer).SetUserSettingsTheme(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Mirror_SetUserSettingsTheme_FullMethodName,
+		FullMethod: User_SetUserSettingsTheme_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MirrorServer).SetUserSettingsTheme(ctx, req.(*SetUserSettingsThemeRequest))
+		return srv.(UserServer).SetUserSettingsTheme(ctx, req.(*SetUserSettingsThemeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mirror_Users_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _User_Users_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UsersRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MirrorServer).Users(ctx, in)
+		return srv.(UserServer).Users(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Mirror_Users_FullMethodName,
+		FullMethod: User_Users_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MirrorServer).Users(ctx, req.(*UsersRequest))
+		return srv.(UserServer).Users(ctx, req.(*UsersRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mirror_UserPermissionDefinitions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _User_UserPermissionDefinitions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UserPermissionDefinitionsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MirrorServer).UserPermissionDefinitions(ctx, in)
+		return srv.(UserServer).UserPermissionDefinitions(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Mirror_UserPermissionDefinitions_FullMethodName,
+		FullMethod: User_UserPermissionDefinitions_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MirrorServer).UserPermissionDefinitions(ctx, req.(*UserPermissionDefinitionsRequest))
+		return srv.(UserServer).UserPermissionDefinitions(ctx, req.(*UserPermissionDefinitionsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mirror_UserPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _User_UserPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UserPermissionsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MirrorServer).UserPermissions(ctx, in)
+		return srv.(UserServer).UserPermissions(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Mirror_UserPermissions_FullMethodName,
+		FullMethod: User_UserPermissions_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MirrorServer).UserPermissions(ctx, req.(*UserPermissionsRequest))
+		return srv.(UserServer).UserPermissions(ctx, req.(*UserPermissionsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mirror_GrantUserPermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _User_GrantUserPermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GrantUserPermissionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MirrorServer).GrantUserPermission(ctx, in)
+		return srv.(UserServer).GrantUserPermission(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Mirror_GrantUserPermission_FullMethodName,
+		FullMethod: User_GrantUserPermission_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MirrorServer).GrantUserPermission(ctx, req.(*GrantUserPermissionRequest))
+		return srv.(UserServer).GrantUserPermission(ctx, req.(*GrantUserPermissionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mirror_RevokeUserPermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _User_RevokeUserPermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RevokeUserPermissionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MirrorServer).RevokeUserPermission(ctx, in)
+		return srv.(UserServer).RevokeUserPermission(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Mirror_RevokeUserPermission_FullMethodName,
+		FullMethod: User_RevokeUserPermission_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MirrorServer).RevokeUserPermission(ctx, req.(*RevokeUserPermissionRequest))
+		return srv.(UserServer).RevokeUserPermission(ctx, req.(*RevokeUserPermissionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// Mirror_ServiceDesc is the grpc.ServiceDesc for Mirror service.
+// User_ServiceDesc is the grpc.ServiceDesc for User service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var Mirror_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "user.Mirror",
-	HandlerType: (*MirrorServer)(nil),
+var User_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "user.User",
+	HandlerType: (*UserServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Register",
-			Handler:    _Mirror_Register_Handler,
+			Handler:    _User_Register_Handler,
 		},
 		{
 			MethodName: "Login",
-			Handler:    _Mirror_Login_Handler,
+			Handler:    _User_Login_Handler,
 		},
 		{
 			MethodName: "UserSettings",
-			Handler:    _Mirror_UserSettings_Handler,
+			Handler:    _User_UserSettings_Handler,
 		},
 		{
 			MethodName: "SetUserSettingsTheme",
-			Handler:    _Mirror_SetUserSettingsTheme_Handler,
+			Handler:    _User_SetUserSettingsTheme_Handler,
 		},
 		{
 			MethodName: "Users",
-			Handler:    _Mirror_Users_Handler,
+			Handler:    _User_Users_Handler,
 		},
 		{
 			MethodName: "UserPermissionDefinitions",
-			Handler:    _Mirror_UserPermissionDefinitions_Handler,
+			Handler:    _User_UserPermissionDefinitions_Handler,
 		},
 		{
 			MethodName: "UserPermissions",
-			Handler:    _Mirror_UserPermissions_Handler,
+			Handler:    _User_UserPermissions_Handler,
 		},
 		{
 			MethodName: "GrantUserPermission",
-			Handler:    _Mirror_GrantUserPermission_Handler,
+			Handler:    _User_GrantUserPermission_Handler,
 		},
 		{
 			MethodName: "RevokeUserPermission",
-			Handler:    _Mirror_RevokeUserPermission_Handler,
+			Handler:    _User_RevokeUserPermission_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

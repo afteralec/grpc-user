@@ -24,7 +24,7 @@ const (
 )
 
 func TestServer(t *testing.T) {
-	newClient := func(addr string) (pb.MirrorClient, func()) {
+	newClient := func(addr string) (pb.UserClient, func()) {
 		conn, err := grpc.NewClient(addr, grpc.WithTransportCredentials(insecure.NewCredentials()))
 		require.NoError(t, err)
 
@@ -33,7 +33,7 @@ func TestServer(t *testing.T) {
 			require.NoError(t, err)
 		}
 
-		client := pb.NewMirrorClient(conn)
+		client := pb.NewUserClient(conn)
 
 		return client, closeClient
 	}
@@ -48,10 +48,10 @@ func TestServer(t *testing.T) {
 	ctx, cancel := context.WithCancel(context.Background())
 	t.Cleanup(cancel)
 
-	err = compose.WaitForService("mirror", wait.ForExposedPort()).Up(ctx)
+	err = compose.WaitForService("user", wait.ForExposedPort()).Up(ctx)
 	require.NoError(t, err)
 
-	server, err := compose.ServiceContainer(ctx, "mirror")
+	server, err := compose.ServiceContainer(ctx, "user")
 	require.NoError(t, err, "get server ServiceContainer")
 
 	host, err := server.Host(ctx)

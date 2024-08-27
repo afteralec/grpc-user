@@ -13,7 +13,7 @@ import (
 )
 
 type server struct {
-	proto.UnimplementedMirrorServer
+	proto.UnimplementedUserServer
 	user *user.Service
 }
 

@@ -26,7 +26,7 @@ func Run(ctx context.Context, config *viper.Viper) error {
 		return err
 	}
 
-	db, err := db.Open("/var/db/mirror.db")
+	db, err := db.Open("/var/db/user.db")
 	if err != nil {
 		return err
 	}
@@ -38,7 +38,7 @@ func Run(ctx context.Context, config *viper.Viper) error {
 	us.SyncRootPermissions(ctx)
 
 	s := grpc.NewServer()
-	pb.RegisterMirrorServer(s, &server{user: &us})
+	pb.RegisterUserServer(s, &server{user: &us})
 
 	go func() {
 		log.Printf("gRPC server listening at %v", lis.Addr())
