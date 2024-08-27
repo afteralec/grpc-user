@@ -1,0 +1,16 @@
+# Temporary files
+tmp
+
+# Built artifacts
+bin
+
+# Database files
+*.db
+*.db-*
+
+# Mac files
+.DS_Store
+**/.DS_Store
+
+# Secrets
+secrets

@@ -1,0 +1,109 @@
+syntax = "proto3";
+package user;
+option go_package = "/proto";
+
+service Mirror {
+  rpc Register (RegisterRequest) returns (RegisterReply);
+  rpc Login (LoginRequest) returns (LoginReply);
+  rpc UserSettings (UserSettingsRequest) returns (UserSettingsReply);
+  rpc SetUserSettingsTheme (SetUserSettingsThemeRequest) returns (SetUserSettingsThemeReply);
+  rpc Users (UsersRequest) returns (UsersReply);
+  rpc UserPermissionDefinitions (UserPermissionDefinitionsRequest) returns (UserPermissionDefinitionsReply);
+  rpc UserPermissions (UserPermissionsRequest) returns (UserPermissionsReply);
+  rpc GrantUserPermission (GrantUserPermissionRequest) returns (GrantUserPermissionReply);
+  rpc RevokeUserPermission (RevokeUserPermissionRequest) returns (RevokeUserPermissionReply);
+}
+
+message RegisterRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message RegisterReply {
+  int64 id = 1;
+}
+
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message LoginReply {
+  bool verified = 1;
+  int64 id = 2;
+}
+
+message UserSettingsRequest {
+  int64 uid = 1;
+}
+
+message UserSettingsReply {
+  int64 id = 1;
+  int64 uid = 2;
+  string theme = 3;
+}
+
+message SetUserSettingsThemeRequest {
+  int64 uid = 1;
+  string theme = 2;
+}
+
+message SetUserSettingsThemeReply {
+  int64 id = 1;
+  int64 uid = 2;
+  string theme = 3;
+}
+
+message UsersRequest {}
+
+message UsersReply {
+  repeated UsersReplyUser users = 1;
+}
+
+message UsersReplyUser {
+  int64 id = 1;
+  string username = 2;
+  string primary_email = 3;
+}
+
+message UserPermissionDefinitionsRequest {}
+
+message UserPermissionDefinitionsReply {
+  repeated UserPermissionDefinitionsReplyPermission permissions = 1;
+}
+
+message UserPermissionDefinitionsReplyPermission {
+  string name = 1;
+  string title = 2;
+  string about = 3;
+  string category = 4;
+}
+
+message UserPermissionsRequest {
+  int64 uid = 1;
+}
+
+message UserPermissionsReply {
+  int64 uid = 1;
+  repeated string names = 2;
+}
+
+message GrantUserPermissionRequest {
+  int64 uid = 1;
+  int64 iuid = 2;
+  string name = 3;
+}
+
+message GrantUserPermissionReply {
+  int64 id = 1;
+}
+
+message RevokeUserPermissionRequest {
+  int64 uid = 1;
+  int64 iuid = 2;
+  string name = 3;
+}
+
+message RevokeUserPermissionReply {
+  int64 id = 1;
+}

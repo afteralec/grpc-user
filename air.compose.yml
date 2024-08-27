@@ -1,0 +1,9 @@
+services:
+  user:
+    build:
+      context: .
+      dockerfile: ./air.Dockerfile
+    volumes:
+      - .:/opt/user
+    ports:
+      - 8009:8009

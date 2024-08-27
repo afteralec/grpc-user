@@ -1,0 +1,15 @@
+version: "2"
+sql:
+  - engine: "sqlite"
+    queries: "queries"
+    schema: "migrations"
+    gen:
+      go:
+        package: "query"
+        sql_package: "database/sql"
+        sql_driver: "github.com/mattn/go-sqlite3"
+        out: "db/query"
+        emit_prepared_queries: true
+        rename:
+          uid: "UID"
+          iuid: "IUID"

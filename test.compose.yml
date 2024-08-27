@@ -1,0 +1,4 @@
+services:
+  user:
+    ports:
+      - 8009:8009

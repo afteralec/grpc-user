@@ -1,0 +1,35 @@
+name: template
+
+secrets:
+  root_username:
+    file: ./secrets/root_username.toml
+  root_passphrase:
+    file: ./secrets/root_passphrase.toml
+
+volumes:
+  user_db:
+
+networks:
+  net:
+    driver: bridge
+
+services:
+  user_migrate:
+    build:
+      context: .
+      dockerfile: ./migrate.Dockerfile
+    volumes:
+      - user_db:/var/db
+    networks:
+      - net
+  mirror:
+    depends_on:
+      - user_migrate
+    build: .
+    volumes:
+      - user_db:/var/db
+    networks:
+      - net
+    secrets:
+      - root_username
+      - root_passphrase
